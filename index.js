@@ -112,7 +112,6 @@ class SettingsList extends React.Component {
   }
 
   _itemEditableBlock(item, index, position) {
-
     return ([
         <Text
             key={'itemTitle_' + index}
@@ -125,11 +124,14 @@ class SettingsList extends React.Component {
         item.isEditable ?
         <TextInput
               key={item.id}
-              keyboardType={this.props.keyboardType ? this.props.keyboardType : 'default'}
+              keyboardType={item.keyboardType ? item.keyboardType : 'default'}
               style={item.editableTextStyle ? item.editableTextStyle : styles.editableText}
               placeholder = {item.placeholder}
               onChangeText={(text) => item.onTextChange(text)}
-              value={item.value} />
+              defaultValue={item.defaultValue}
+              autoCorrect={false}
+              autoCapitalize={"none"}
+            />
         : null
     ])
   }
