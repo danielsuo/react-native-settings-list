@@ -84,7 +84,7 @@ class SettingsList extends React.Component {
       return (
         <View key={'group_' + index}>
           <Text style={[{margin:5},group.header.headerStyle]} numberOfLines={group.header.headerNumberOfLines} ellipsizeMode="tail" ref={group.header.headerRef}>{group.header.headerText}</Text>
-          <View style={{borderTopWidth:1, borderBottomWidth:1, borderColor: this.props.borderColor}}>
+          <View style={{borderTopWidth:0.5, borderBottomWidth:0.5, borderColor: this.props.borderColor}}>
             {group.items.map((item, index) => {
               return this._itemView(item,index, group.items.length);
             })}
@@ -95,7 +95,7 @@ class SettingsList extends React.Component {
       let items;
       if (group.items.length > 0) {
         items = (
-          <View style={{borderTopWidth:1, borderBottomWidth:1, borderColor: this.props.borderColor}}>
+          <View style={{borderTopWidth:0.5, borderBottomWidth:0.5, borderColor: this.props.borderColor}}>
             {group.items.map((item, index) => {
               return this._itemView(item,index, group.items.length);
             })}
@@ -171,11 +171,11 @@ class SettingsList extends React.Component {
 
     if(item.borderHide) {
       switch(item.borderHide) {
-        case 'Top' : border = {borderBottomWidth:1, borderColor: this.props.borderColor}; break;
-        case 'Bottom' : border = {borderTopWidth:1, borderColor: this.props.borderColor}; break;
+        case 'Top' : border = {borderBottomWidth:0.5, borderColor: this.props.borderColor}; break;
+        case 'Bottom' : border = {borderTopWidth:0.5, borderColor: this.props.borderColor}; break;
       }
     } else {
-      border = index === max-1 ? {borderWidth:0} : {borderBottomWidth:1, borderColor: this.props.borderColor};
+      border = index === max-1 ? {borderWidth:0} : {borderBottomWidth:0.5, borderColor: this.props.borderColor};
     }
 
     let titleInfoPosition = item.titleInfoPosition ? item.titleInfoPosition : this.props.defaultTitleInfoPosition;
@@ -187,11 +187,11 @@ class SettingsList extends React.Component {
           {item.isAuth ?
             <View style={item.titleBoxStyle ? item.titleBoxStyle : [styles.titleBox, border]}>
               <View style={{paddingLeft:5,flexDirection:'column',flex:1}}>
-                <View style={{borderBottomWidth:1,borderColor:this.props.borderColor}}>
+                <View style={{borderBottomWidth:0.5,borderColor:this.props.borderColor}}>
                   <TextInput
                     ref="UserNameInputBlock"
                     onSubmitEditing={() => this.refs.PasswordInputBlock.focus()}
-                    style={{flex:1,height:30, borderBottomWidth:1}}
+                    style={{flex:1,height:30, borderBottomWidth:0.5}}
                     placeholder = "username"
                     {...item.authPropsUser}
                   />
@@ -213,7 +213,7 @@ class SettingsList extends React.Component {
           <View style={item.titleBoxStyle ? item.titleBoxStyle : [styles.titleBox, border, {minHeight:item.itemWidth ? item.itemWidth : this.props.defaultItemSize}]}>
             {titleInfoPosition === 'Bottom' ?
                 <View style={{flexDirection:'column',flex:1,justifyContent:'center'}}>
-                    {item.isEditable ? this._itemEditableBlock(item, inde, 'Bottom') : this._itemTitleBlock(item, index, 'Bottom')}
+                    {item.isEditable ? this._itemEditableBlock(item, index, 'Bottom') : this._itemTitleBlock(item, index, 'Bottom')}
                 </View>
               : item.isEditable ? this._itemEditableBlock(item, index) : this._itemTitleBlock(item, index)}
 
