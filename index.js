@@ -130,6 +130,7 @@ class SettingsList extends React.Component {
               onChangeText={(text) => item.onTextChange(text)}
               defaultValue={item.defaultValue}
               autoCorrect={false}
+              multipleLines={false}
               autoCapitalize={"none"}
             />
         : null
