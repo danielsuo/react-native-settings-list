@@ -129,6 +129,7 @@ class SettingsList extends React.Component {
               placeholder = {item.placeholder}
               onChangeText={(text) => item.onTextChange(text)}
               defaultValue={item.defaultValue}
+              clearButtonMode={true}
               autoCorrect={false}
               multipleLines={false}
               autoCapitalize={"none"}
