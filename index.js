@@ -123,13 +123,13 @@ class SettingsList extends React.Component {
         </Text>,
         item.isEditable ?
         <TextInput
-              key={item.id}
+              key={'itemInput_' + index}
               keyboardType={item.keyboardType ? item.keyboardType : 'default'}
               style={[styles.editableText, item.editableTextStyle]}
               placeholder = {item.placeholder}
               onChangeText={(text) => item.onTextChange(text)}
               defaultValue={item.defaultValue}
-              clearButtonMode={true}
+              clearButtonMode={"while-editing"}
               autoCorrect={false}
               multipleLines={false}
               autoCapitalize={"none"}
